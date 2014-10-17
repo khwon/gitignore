@@ -33,8 +33,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function s:WildignoreFromGitignore(...)
-  let gitignore = (a:0 && !empty(a:1)) ? fnamemodify(a:1, ':p') : fnamemodify(expand('%'), ':p:h') . '/'
-  let gitignore .= '.gitignore'
+  let gitignore = (a:0 && !empty(a:1)) ? fnamemodify(a:1, ':p') : fnamemodify('.gitignore', ':p')
   if filereadable(gitignore)
     let igstring = ''
     for oline in readfile(gitignore)
